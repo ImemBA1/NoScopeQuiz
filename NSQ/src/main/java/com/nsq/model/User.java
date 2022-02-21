@@ -1,26 +1,23 @@
 package com.nsq.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
+@Entity
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
 
-    private String firstName;
-
-    private String lastName;
+    @Column(unique = true)
+    private String username;
 
     private String password;
-
-    private String email;
-
-
-    private String phone;
 
 }

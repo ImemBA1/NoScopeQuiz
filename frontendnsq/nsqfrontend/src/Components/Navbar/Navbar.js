@@ -4,8 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import icon from "../../Images/iconNSQ.png"
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,7 +16,16 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
+        color:'black'
     },
+    img: {
+        width: '50px',
+        height: '50px',
+        marginRight: '10px'
+    },
+    bgAppBar: {
+        backgroundColor: '#DEB887FF'
+    }
 }));
 
 export default function Navbar() {
@@ -24,15 +33,15 @@ export default function Navbar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.bgAppBar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon/>
-                    </IconButton>
+                    <img src={icon} alt="iconeNSQ" className={classes.img}/>
                     <Typography variant="h6" className={classes.title}>
                         No Scope Quiz
                     </Typography>
-                    <Button color="inherit">Se connecter</Button>
+                    <Button color="black">Accueil</Button>
+                    <Button color="black">Se connecter</Button>
+                    <Button color="black">Crée un compte</Button>
                 </Toolbar>
             </AppBar>
         </div>

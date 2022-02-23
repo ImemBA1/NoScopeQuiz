@@ -8,4 +8,5 @@ import javax.persistence.Entity;
 @Entity
 public class Player extends User {
     private String score;
+
 }

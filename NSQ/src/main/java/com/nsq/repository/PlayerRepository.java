@@ -4,4 +4,9 @@ import com.nsq.model.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
+    Player findOneByUsernameAndPassword(String username, String password);
+
+    boolean existsByUsernameAndPassword(String username, String password);
+
+    boolean existsByUsername(String username);
 }

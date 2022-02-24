@@ -1,5 +1,6 @@
 package com.nsq.controller;
 
+import com.nsq.dto.ResponseMessage;
 import com.nsq.model.Player;
 import com.nsq.service.PlayerService;
 import org.springframework.http.HttpStatus;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/admin")
+@RequestMapping("/player")
 public class PlayerController {
     private final PlayerService playerService;
 
@@ -24,7 +25,7 @@ public class PlayerController {
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(e.getMessage());
+                    .body(new ResponseMessage(e.getMessage()));
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlayer);
     }
@@ -34,11 +35,11 @@ public class PlayerController {
         Player player;
         try {
             player = playerService.getOneByEmailAndPassword(username, password);
+        return ResponseEntity.ok(player);
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(e.getMessage());
+                    .body(new ResponseMessage(e.getMessage()));
         }
-        return ResponseEntity.ok(player);
     }
 }

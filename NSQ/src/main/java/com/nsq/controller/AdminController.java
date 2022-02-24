@@ -1,5 +1,6 @@
 package com.nsq.controller;
 
+import com.nsq.dto.ResponseMessage;
 import com.nsq.model.Admin;
 import com.nsq.service.AdminService;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(e.getMessage());
+                    .body(new ResponseMessage(e.getMessage()));
         }
     }
 

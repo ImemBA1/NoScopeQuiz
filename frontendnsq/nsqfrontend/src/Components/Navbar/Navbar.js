@@ -3,8 +3,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import icon from "../../Images/iconNSQ.png"
+import {Link} from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        color:'black'
+        color: 'black'
     },
     img: {
         width: '50px',
@@ -39,9 +39,9 @@ export default function Navbar() {
                     <Typography variant="h6" className={classes.title}>
                         No Scope Quiz
                     </Typography>
-                    <Button color="black">Accueil</Button>
-                    <Button color="black">Se connecter</Button>
-                    <Button color="black">Crée un compte</Button>
+                    <Link color="black" to="/">Accueil</Link>
+                    <Link color="black" to="/AdminLogin">Se connecter</Link>
+                    <Link color="black">Crée un compte</Link>
                 </Toolbar>
             </AppBar>
         </div>

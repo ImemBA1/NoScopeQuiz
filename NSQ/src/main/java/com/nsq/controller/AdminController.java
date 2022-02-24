@@ -16,7 +16,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/{username}/{password}")
+    @GetMapping("/login/{username}/{password}")
     public ResponseEntity<?> login(@PathVariable String username, @PathVariable String password) {
         try {
             Admin admin = adminService.getOneByUsernameAndPassword(username, password);

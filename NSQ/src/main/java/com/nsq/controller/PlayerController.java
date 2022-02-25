@@ -25,7 +25,7 @@ public class PlayerController {
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(new ResponseMessage(e.getMessage()));
+                    .body(new ResponseMessage("Erreur lors de la création du joueur"));
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlayer);
     }
@@ -35,11 +35,11 @@ public class PlayerController {
         Player player;
         try {
             player = playerService.getOneByEmailAndPassword(username, password);
-        return ResponseEntity.ok(player);
+            return ResponseEntity.ok(player);
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(new ResponseMessage(e.getMessage()));
+                    .body(new ResponseMessage("Erreur lors de la connexion du joueur"));
         }
     }
 }

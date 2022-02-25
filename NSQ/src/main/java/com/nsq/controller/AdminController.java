@@ -25,7 +25,7 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity
                     .badRequest()
-                    .body(new ResponseMessage(e.getMessage()));
+                    .body(new ResponseMessage("Erreur lors de la connexion"));
         }
     }
 

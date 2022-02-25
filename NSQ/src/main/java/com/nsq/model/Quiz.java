@@ -17,18 +17,21 @@ public class Quiz {
 
     private String categorie;
 
+    private String description;
+
     private String difficulte;
 
     @OneToMany
-    private List<Question> questions;
+    private List<Question> questionsList;
 
     public Quiz() {
     }
 
-    public Quiz(String categorie, String difficulte, List<Question> questions) {
+    public Quiz(String categorie, String description, String difficulte, List<Question> questionsList) {
         this.categorie = categorie;
+        this.description = description;
         this.difficulte = difficulte;
-        this.questions = questions;
+        this.questionsList = questionsList;
     }
 }
 

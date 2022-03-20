@@ -39,9 +39,9 @@ export default function Navbar() {
                     <Typography variant="h6" className={classes.title}>
                         No Scope Quiz
                     </Typography>
-                    <Link color="black" to="/">Accueil</Link>
-                    <Link color="black" to="/AdminLogin">Se connecter</Link>
-                    <Link color="black">Crée un compte</Link>
+                    <Link to="/">Accueil</Link>
+                    <Link to="/AdminLogin">Se connecter</Link>
+                    <Link>Crée un compte</Link>
                 </Toolbar>
             </AppBar>
         </div>

@@ -1,19 +1,18 @@
 import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import AdminLogin from "../src/Components/Login/AdminLogin";
-import Home from "./Components/Home/Home";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import PlayerLogin from "./Components/Login/PlayerLogin";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
     return (
-        <BrowserRouter>
+        <Router>
+            <Navbar/>
             <Routes>
-                {/*<Route path="/" element={<Home/>}/>*/}
-                {/*<Route path="/LoginPlayer" element={<PlayerLogin/>}/>*/}
-                <Route path="/" element={<AdminLogin/>}/>
+                {/*<Route exact path="/lobby" component={Lobby}/>*/}
+                {/*<Route exact path="/admin" component={AdminLogin}/>*/}
+                <Route path="/" element={<PlayerLogin/>}/>
             </Routes>
-
-        </BrowserRouter>
-
+        </Router>
     );
 }
 

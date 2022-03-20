@@ -30,7 +30,7 @@ public class PlayerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlayer);
     }
 
-    @GetMapping("/{username}/{password}")
+    @GetMapping("/login/{username}/{password}")
     public ResponseEntity<?> login(@PathVariable String username, @PathVariable String password) {
         Player player;
         try {

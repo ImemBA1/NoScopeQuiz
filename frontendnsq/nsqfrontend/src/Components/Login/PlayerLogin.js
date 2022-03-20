@@ -73,7 +73,7 @@ const PlayerLogin = () => {
 
         <div className="first">
             <div className="second">
-                <span style={{fontSize: 30, marginBottom: 30, marginTop: 30}}>Connexion Joueur</span>
+                <span style={{fontSize: 30, marginBottom: 30, marginTop: 30}}>Connectez-vous</span>
                 <div className="credentials">
                     {error && <ErrorMessageBalise>Vos identifiants sont incorrects</ErrorMessageBalise>}
                     <TextField
@@ -108,7 +108,7 @@ const PlayerLogin = () => {
                             label="Mot de passe"
                         />
                     </FormControl>
-                    <Link to="/register" underline="always">
+                    <Link href={"/register"} style={{ textAlign:"center"}} underline="hover">
                         {'Pas de compte ? Inscrivez-vous!'}
                     </Link>
                     <MuiThemeProvider theme={theme}>

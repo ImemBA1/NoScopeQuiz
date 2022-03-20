@@ -15,9 +15,9 @@ public class PlayerService {
     }
 
     public Player create(Player player) throws PlayerAlreadyExistsException {
-        Assert.isTrue(player != null, "L'étudiant ne peut pas être vide");
+        Assert.isTrue(player != null, "Erreur, lors de la création du joueur");
         if (isNotValid(player))
-            throw new PlayerAlreadyExistsException("Un compte existe déjà pour cet étudiant");
+            throw new PlayerAlreadyExistsException("Un compte existe déjà pour ce joueur");
         return playerRepository.save(player);
     }
 

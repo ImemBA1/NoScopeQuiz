@@ -16,12 +16,14 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        color: 'black'
+        color: 'black',
+        marginRight: '10px',
     },
     img: {
-        width: '50px',
-        height: '50px',
-        marginRight: '10px'
+        width: '60px',
+        height: '60px',
+        marginRight: '10px',
+        fontStyle: 'italic',
     },
     bgAppBar: {
         backgroundColor: '#DEB887FF'
@@ -30,18 +32,52 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
+    const user = localStorage.getItem('player');
 
+    const logout = () => {
+        localStorage.removeItem('player');
+        window.location.reload();
+    };
+    console.log(user);
+    // const user = undefined;
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.bgAppBar}>
                 <Toolbar>
                     <img src={icon} alt="iconeNSQ" className={classes.img}/>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h5" className={classes.title}>
                         No Scope Quiz
                     </Typography>
-                    <Link to="/">Accueil</Link>
-                    <Link to="/AdminLogin">Se connecter</Link>
-                    <Link>Crée un compte</Link>
+                    <Link href="/" underline="hover">
+                        <Typography variant="h6" className={classes.title}>
+                            Home
+                        </Typography>
+                    </Link>
+                    {user != null || <>
+                        <Link href="/register" underline="hover">
+                            <Typography variant="h6" className={classes.title}>
+                                S'inscrire
+                            </Typography>
+                        </Link>
+                        <Link href="/login" underline="hover">
+                            <Typography variant="h6" className={classes.title}>
+                                Se connecter
+                            </Typography>
+                        </Link>
+                    </>}
+                    {user == null || <>
+                        <Link href="/login" onClick={logout} underline="hover">
+                            <Typography variant="h6" className={classes.title}>
+                                Se déconnecter
+                            </Typography>
+                        </Link>
+                    </>}
+                    {/*<Link href="/quiz">*/}
+                    {/*    <Typography variant="h6" className={classes.title}>*/}
+                    {/*        Quiz*/}
+                    {/*    </Typography>*/}
+                    {/*</Link>*/}
+
                 </Toolbar>
             </AppBar>
         </div>

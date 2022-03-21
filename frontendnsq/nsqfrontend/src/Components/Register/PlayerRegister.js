@@ -11,6 +11,7 @@ import {
     OutlinedInput,
     TextField
 } from "@material-ui/core";
+import React from 'react';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {useState} from "react";
 import "./PlayerRegister.css";

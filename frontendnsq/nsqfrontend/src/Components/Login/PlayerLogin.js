@@ -10,6 +10,7 @@ import {
     OutlinedInput,
     TextField
 } from "@material-ui/core";
+import React from 'react';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {useState} from "react";
 import "./PlayerLogin.css";
@@ -58,9 +59,9 @@ const PlayerLogin = () => {
         } else {
             login(user.username, user.password).then(res => {
                 if (res.username !== undefined) {
-                    localStorage.setItem("token", res.username);
+                    localStorage.setItem("player", res.username);
                     toast.fire({title: "Bienvenue " + res.username}).then(() => {
-                        window.location.href = "/";
+                        window.location.href = "/home";
                     })
                 } else {
                     setError(true);

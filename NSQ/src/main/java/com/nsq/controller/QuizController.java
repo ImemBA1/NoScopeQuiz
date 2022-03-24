@@ -5,6 +5,8 @@ import com.nsq.service.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/quiz")
@@ -25,5 +27,11 @@ public class QuizController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
         return ResponseEntity.ok(quizCree);
+    }
+
+    @GetMapping("/liste_quiz")
+    public ResponseEntity<?> getListeQuiz(){
+        List<Quiz> listeQuiz = quizService.getListeQuiz();
+        return ResponseEntity.ok(listeQuiz);
     }
 }

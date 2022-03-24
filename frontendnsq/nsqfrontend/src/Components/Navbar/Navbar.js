@@ -38,8 +38,7 @@ export default function Navbar() {
         localStorage.removeItem('player');
         window.location.reload();
     };
-    console.log(user);
-    // const user = undefined;
+
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.bgAppBar}>

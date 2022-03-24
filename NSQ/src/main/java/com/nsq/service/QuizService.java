@@ -4,6 +4,8 @@ import com.nsq.model.Quiz;
 import com.nsq.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QuizService {
 
@@ -19,5 +21,9 @@ public class QuizService {
 
     public Quiz getQuizByCategorie(String categorie) {
         return quizRepository.findByCategorie(categorie);
+    }
+
+    public List<Quiz> getListeQuiz() {
+        return quizRepository.findAll();
     }
 }

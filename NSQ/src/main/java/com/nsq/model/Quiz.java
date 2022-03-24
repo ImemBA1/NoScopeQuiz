@@ -15,6 +15,8 @@ public class Quiz {
     @GeneratedValue
     private Long idQuiz;
 
+    private String titre;
+
     private String categorie;
 
     private String description;
@@ -27,7 +29,8 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(String categorie, String description, String difficulte, List<Question> questionsList) {
+    public Quiz(String categorie, String description, String difficulte, List<Question> questionsList, String titre) {
+        this.titre = titre;
         this.categorie = categorie;
         this.description = description;
         this.difficulte = difficulte;

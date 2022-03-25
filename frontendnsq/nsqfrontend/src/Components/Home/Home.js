@@ -6,6 +6,7 @@ import {Grid} from "@material-ui/core";
 
 export default function Home() {
     const [quiz, setQuiz] = useState([]);
+
     const getAllQuiz = async () => {
         const response = await fetch(`${urlBackend}/quiz/liste_quiz`);
         return await response.json();

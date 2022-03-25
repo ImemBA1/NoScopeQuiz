@@ -1,30 +1,58 @@
 import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
+import {CircularProgress} from "@material-ui/core";
+import "./Quiz.css";
+import Question from "../Question/Question";
 
-
-const Quiz = (quiz) => {
+const Quiz = () => {
     const history = useHistory();
     const [options, setOptions] = useState([]);
     const [currQues, setCurrQues] = useState(0);
+    const [score, setScore] = useState(0);
 
-    let listQuestion = [];
-    listQuestion = history.location.state.quiz.questionsList;
-    console.log(listQuestion);
+    let listQuestion;
+    let quizState;
+
+    quizState = history.location.state.quiz;
+    listQuestion = quizState.questionsList;
+
     useEffect(() => {
-        setOptions(listQuestion &&
-            shuffle([listQuestion[currQues].option1,
-                listQuestion[currQues].option2,
-                listQuestion[currQues].option3,
-                listQuestion[currQues].answer]));
-    }, [currQues, listQuestion]);
+        setOptions(quizState.questionsList &&
+            shuffle([quizState.questionsList[currQues].option1,
+                quizState.questionsList[currQues].option2,
+                quizState.questionsList[currQues].option3,
+                quizState.questionsList[currQues].answer]));
+    }, [quizState.questionsList, currQues]);
+
+    // console.log(options);
 
     const shuffle = (reponses) => {
         return reponses.sort(() => Math.random() - 0.5);
     };
 
     return (
-        <div>
-            <h1>Quiz</h1>
+        <div className='quiz'>
+            <span className="title">{quizState.titre}</span>
+            {listQuestion ? (
+                <>
+                    <div className="quizInfo">
+                        <span>Categorie: {quizState.categorie}</span>
+                        <span>Score: {score}</span>
+                    </div>
+                    <Question
+                        currQues={currQues}
+                        setCurrQues={setCurrQues}
+                        questions={listQuestion}
+                        options={options}
+                        answer={listQuestion[currQues].answer}
+                        score={score}
+                        setScore={setScore}
+                    />
+                </>
+            ) : (
+                <CircularProgress style={{margin: 100}} color='inherit' size={150} thickness={1}/>
+            )
+            }
         </div>
     );
 };

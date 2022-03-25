@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import PlayerRegister from "./Components/Register/PlayerRegister";
 import Home from "./Components/Home/Home";
 import Quiz from "./Components/Quiz/Quiz";
+import Resultat from "./Components/Resultat/Resultat";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/register" component={PlayerRegister}/>
             <Route path="/login" component={PlayerLogin}/>
             <Route path="/quiz" component={Quiz}/>
+            <Route path="/result" component={Resultat}/>
         </Router>
     );
 }

@@ -24,7 +24,6 @@ public class QuestionService {
         question.setOption1(questionDTO.getOption1());
         question.setOption2(questionDTO.getOption2());
         question.setOption3(questionDTO.getOption3());
-        question.setOption4(questionDTO.getAnswer());
         quizRepository.getById(questionDTO.getIdQuiz()).getQuestionsList().add(question);
         return questionRepository.save(question);
     }

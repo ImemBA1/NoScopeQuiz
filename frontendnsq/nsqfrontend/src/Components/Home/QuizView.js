@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./QuizView.css";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
 

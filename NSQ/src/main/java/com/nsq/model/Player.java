@@ -7,6 +7,5 @@ import javax.persistence.Entity;
 @Data
 @Entity
 public class Player extends User {
-    private String score;
 
 }

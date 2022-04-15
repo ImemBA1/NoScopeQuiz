@@ -17,19 +17,19 @@ const Question = ({
     const [error, setError] = useState(false);
     const history = useHistory();
 
-    const handleSelect = (i) => {
-        if (selected === i && selected === answer) {
+    const handleSelect = (choix) => {
+        if (selected === choix && selected === answer) {
             return "correct";
-        } else if (selected === i && selected !== answer) {
+        } else if (selected === choix && selected !== answer) {
             return "wrong";
-        } else if (i === answer) {
+        } else if (choix === answer) {
             return "correct";
         }
     }
 
-    const handleCheck = (i) => {
-        setSelected(i);
-        if (i === answer)
+    const handleCheck = (choix) => {
+        setSelected(choix);
+        if (choix === answer)
             setScore(score + 1);
         setError(false);
     }
@@ -51,7 +51,6 @@ const Question = ({
     return (
         <div className='group'>
             <h2>Question : {currQues + 1}</h2>
-
             <div className="questionQuiz">
                 <h3>{questions[currQues].question}</h3>
                 {error && <ErrorMessageBalise>{error}</ErrorMessageBalise>}
@@ -65,8 +64,8 @@ const Question = ({
                     }
                 </div>
                 <div className={"buttons"}>
-                    <Button variant="contained" size="large" href="/home">Quittez</Button>
-                    <Button variant="contained" size="large" onClick={handleNext}>Prochaine Question</Button>
+                    <Button variant="contained" href="/home">Quittez</Button>
+                    <Button variant="contained" onClick={handleNext}>Prochaine Question</Button>
                 </div>
             </div>
         </div>

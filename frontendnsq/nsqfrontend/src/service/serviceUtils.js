@@ -37,7 +37,7 @@ export const toast = Swal.mixin({
     icon: 'success',
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2500,
 });
 export const toastErr = Swal.mixin({
     toast: true,

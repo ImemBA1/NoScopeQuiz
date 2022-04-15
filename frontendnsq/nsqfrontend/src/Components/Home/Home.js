@@ -18,7 +18,6 @@ export default function Home() {
         });
     }, []);
 
-    // use
     return (
         <div>
             <h2 className={"text-center mt-3 fst-italic text-decoration-underline"}>Liste des Quiz</h2>

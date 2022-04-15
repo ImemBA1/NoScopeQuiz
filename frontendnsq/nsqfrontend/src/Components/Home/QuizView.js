@@ -16,13 +16,13 @@ export default function QuizView(props) {
                     </h4>
                     <div className="d-flex justify-content-around">
                         <p>
-                            Difficulté: {quiz.difficulte}
+                            Difficulté: {quiz.difficulte} 
                         </p>
                         <p>
-                            Catégorie: {quiz.categorie}
+                            Catégorie: {quiz.categorie} 
                         </p>
                         <p>
-                            Nombre de questions: {quiz.questionsList.length}
+                            Nb de questions: {quiz.questionsList.length}
                         </p>
                     </div>
                     <div className={`d-flex justify-content-around ${styles.quizDescription}`}>

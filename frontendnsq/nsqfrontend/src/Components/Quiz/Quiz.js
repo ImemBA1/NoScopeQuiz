@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
-import {CircularProgress} from "@material-ui/core";
 import "./Quiz.css";
 import Question from "../Question/Question";
 
@@ -18,7 +17,7 @@ const Quiz = () => {
 
     useEffect(() => {
         setOptions(quizState.questionsList &&
-            shuffle([quizState.questionsList[currQues].option1,
+            mix([quizState.questionsList[currQues].option1,
                 quizState.questionsList[currQues].option2,
                 quizState.questionsList[currQues].option3,
                 quizState.questionsList[currQues].answer]));
@@ -26,14 +25,14 @@ const Quiz = () => {
 
     // console.log(options);
 
-    const shuffle = (reponses) => {
+    const mix = (reponses) => {
         return reponses.sort(() => Math.random() - 0.5);
     };
 
     return (
         <div className='quiz'>
             <span className="title">{quizState.titre}</span>
-            {listQuestion ? (
+            {(
                 <>
                     <div className="quizInfo">
                         <span>Categorie: {quizState.categorie}</span>
@@ -49,8 +48,6 @@ const Quiz = () => {
                         setScore={setScore}
                     />
                 </>
-            ) : (
-                <CircularProgress style={{margin: 100}} color='inherit' size={150} thickness={1}/>
             )
             }
         </div>

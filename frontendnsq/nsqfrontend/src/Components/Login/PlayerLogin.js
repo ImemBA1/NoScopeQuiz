@@ -60,7 +60,7 @@ const PlayerLogin = () => {
             login(user.username, user.password).then(res => {
                 if (res.username !== undefined) {
                     localStorage.setItem("player", res.username);
-                    toast.fire({title: "Bienvenue " + res.username}).then(() => {
+                    toast.fire({title: "Bienvenue " + res.username} ).then(() => {
                         window.location.href = "/home";
                     })
                 } else {
@@ -109,9 +109,11 @@ const PlayerLogin = () => {
                             label="Mot de passe"
                         />
                     </FormControl>
+
                     <Link href={"/register"} style={{ textAlign:"center"}} underline="hover">
                         {'Pas de compte ? Inscrivez-vous!'}
                     </Link>
+
                     <MuiThemeProvider theme={theme}>
                         <Button
                             variant="contained"

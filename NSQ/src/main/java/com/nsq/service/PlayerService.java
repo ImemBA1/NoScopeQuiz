@@ -34,4 +34,8 @@ public class PlayerService {
     private boolean isUsernameAndPasswordValid(String username, String password) {
         return playerRepository.existsByUsernameAndPassword(username, password);
     }
+
+    public Player getOneByUsername(String username) {
+        return playerRepository.findOneByUsername(username);
+    }
 }

@@ -42,4 +42,17 @@ public class PlayerController {
                     .body(new ResponseMessage("Erreur lors de la connexion du joueur"));
         }
     }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<?> getOneByUsername(@PathVariable String username) {
+        Player player;
+        try {
+            player = playerService.getOneByUsername(username);
+            return ResponseEntity.ok(player);
+        } catch (Exception e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new ResponseMessage("Erreur lors de la récupération du joueur"));
+        }
+    }
 }

@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import icon from "../../Images/iconNSQ.png"
 import {Link} from "@material-ui/core";
+import {urlBackend} from "../../service/serviceUtils";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,12 +34,28 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const classes = useStyles();
     const user = localStorage.getItem('player');
-
+    let isAdmin = false;
     const logout = () => {
         localStorage.removeItem('player');
         window.location.reload();
     };
+    if(user) {
 
+        const reponse = fetch(`${urlBackend}/player/${user}`)
+            .then(response => response.json())
+            .then(user => {
+                return user.role;
+            });
+
+        const getUser = async () => {
+            const role = await reponse;
+            if (role === 'admin') {
+                isAdmin = true;
+            }
+        };
+        getUser();
+    }
+    console.log(isAdmin);
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.bgAppBar}>
@@ -47,11 +64,7 @@ export default function Navbar() {
                     <Typography variant="h5" className={classes.title}>
                         No Scope Quiz
                     </Typography>
-                    <Link href="/" underline="hover">
-                        <Typography variant="h6" className={classes.title}>
-                            Home
-                        </Typography>
-                    </Link>
+
                     {user != null || <>
                         <Link href="/register" underline="hover">
                             <Typography variant="h6" className={classes.title}>
@@ -65,18 +78,24 @@ export default function Navbar() {
                         </Link>
                     </>}
                     {user == null || <>
+                        <Link href="/" underline="hover">
+                            <Typography variant="h6" className={classes.title}>
+                                Accueil
+                            </Typography>
+                        </Link>
+                        {isAdmin || <>
+                            <Link href="/liste-joueurs" underline="hover">
+                                <Typography variant="h6" className={classes.title}>
+                                    Joueurs
+                                </Typography>
+                            </Link>
+                        </>}
                         <Link href="/login" onClick={logout} underline="hover">
                             <Typography variant="h6" className={classes.title}>
                                 Se déconnecter
                             </Typography>
                         </Link>
                     </>}
-                    {/*<Link href="/quiz">*/}
-                    {/*    <Typography variant="h6" className={classes.title}>*/}
-                    {/*        Quiz*/}
-                    {/*    </Typography>*/}
-                    {/*</Link>*/}
-
                 </Toolbar>
             </AppBar>
         </div>

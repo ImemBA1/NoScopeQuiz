@@ -3,8 +3,11 @@ package com.nsq.service;
 import com.nsq.exception.PlayerAlreadyExistsException;
 import com.nsq.model.Player;
 import com.nsq.repository.PlayerRepository;
+import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 @Service
 public class PlayerService {
@@ -37,5 +40,9 @@ public class PlayerService {
 
     public Player getOneByUsername(String username) {
         return playerRepository.findOneByUsername(username);
+    }
+
+    public List<Player> getAllJoueurs() {
+        return playerRepository.findAll();
     }
 }

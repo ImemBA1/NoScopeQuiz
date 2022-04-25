@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/player")
@@ -54,5 +56,11 @@ public class PlayerController {
                     .badRequest()
                     .body(new ResponseMessage("Erreur lors de la récupération du joueur"));
         }
+    }
+
+    @GetMapping("/liste_joueurs")
+    public ResponseEntity<?> getAllJoueurs() {
+        List<Player> playerList = playerService.getAllJoueurs();
+        return ResponseEntity.ok(playerList);
     }
 }

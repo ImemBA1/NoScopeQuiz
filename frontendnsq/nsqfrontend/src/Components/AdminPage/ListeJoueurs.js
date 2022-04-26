@@ -31,18 +31,18 @@ const ListeJoueurs = () => {
 
     if (listJoueur.length === 0) {
         return (
-            <div style={{margin: 'auto', marginTop:'45px', textAlign:"center"}}>
-            <Typography variant="h2" gutterBottom component="div">
-                Aucun joueur enregistré
-            </Typography>
+            <div style={{margin: 'auto', marginTop: '45px', textAlign: "center"}}>
+                <Typography variant="h2" gutterBottom component="div">
+                    Aucun joueur enregistré
+                </Typography>
             </div>
         );
     }
     console.log(listJoueur);
     return (
-        <div style={{ height: 300, width: '70%', margin: 'auto', marginTop:'35px'}}>
-            <Typography variant="h5" gutterBottom component="div" style={{ textAlign:"center"}}>
-               Liste des joueurs
+        <div style={{height: 300, width: '70%', margin: 'auto', marginTop: '35px'}}>
+            <Typography variant="h5" gutterBottom component="div" style={{textAlign: "center"}}>
+                Liste des joueurs
             </Typography>
             <TableContainer component={Paper}>
                 <Table className={classes.table} size="small">
@@ -56,7 +56,7 @@ const ListeJoueurs = () => {
                     </TableHead>
                     <TableBody>
                         {listJoueur.map((player) => (
-                            <TableRow key={player.id}  style={{textTransform: "capitalize"}}>
+                            <TableRow key={player.id} style={{textTransform: "capitalize"}}>
                                 <TableCell component="th" scope="row">{player.id}</TableCell>
                                 <TableCell>
                                     {player.username}

@@ -89,6 +89,11 @@ export default function Navbar() {
                                     Joueurs
                                 </Typography>
                             </Link>
+                            <Link href="/ajout-question" underline="hover">
+                                <Typography variant="h6" className={classes.title}>
+                                    Joueurs
+                                </Typography>
+                            </Link>
                         </>}
                         <Link href="/login" onClick={logout} underline="hover">
                             <Typography variant="h6" className={classes.title}>

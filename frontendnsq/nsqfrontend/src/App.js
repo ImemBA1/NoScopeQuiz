@@ -7,6 +7,8 @@ import Home from "./Components/Home/Home";
 import Quiz from "./Components/Quiz/Quiz";
 import Resultat from "./Components/Resultat/Resultat";
 import ListeJoueurs from "./Components/AdminPage/ListeJoueurs";
+import Dashboard from "./Components/AdminPage/Dashboard";
+import AjoutQuestion from "./Components/AdminPage/AjoutQuestion";
 
 function App() {
     return (
@@ -19,6 +21,9 @@ function App() {
             <Route path="/quiz" component={Quiz}/>
             <Route path="/result" component={Resultat}/>
             <Route path="/liste-joueurs" component={ListeJoueurs}/>
+            <Route path="/ajouter_question" component={AjoutQuestion}/>
+            <Route path="/dashboard" component={Dashboard}/>
+
         </Router>
     );
 }

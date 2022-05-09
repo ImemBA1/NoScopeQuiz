@@ -49,4 +49,10 @@ public class PlayerService {
     public List<Player> getAllJoueurs() {
         return playerRepository.findAll();
     }
+
+    public Player updateScore(String username) {
+        Player player = playerRepository.findOneByUsername(username);
+        player.setQuizCount(player.getQuizCount() + 1);
+        return playerRepository.save(player);
+    }
 }

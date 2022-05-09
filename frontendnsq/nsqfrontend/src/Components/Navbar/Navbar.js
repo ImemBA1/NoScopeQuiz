@@ -84,9 +84,9 @@ export default function Navbar() {
                                     Joueurs
                                 </Typography>
                             </Link>
-                            <Link href="/ajout-question" underline="hover">
+                            <Link href="/dashboard" underline="hover">
                                 <Typography variant="h6" className={classes.title}>
-                                    Ajouter une question
+                                    Dashboard
                                 </Typography>
                             </Link>
                         </>}

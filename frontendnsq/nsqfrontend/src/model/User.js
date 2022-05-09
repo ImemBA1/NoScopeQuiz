@@ -3,13 +3,13 @@ class User{
     username = null;
     password = null;
     quizCount = 0;
-    role = "joueur"
+    role = "";
 
     constructor(id, username, password, role, quizCount){
         this.id = id;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.role = "Joueur";
         this.quizCount = quizCount;
     }
 }

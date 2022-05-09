@@ -58,7 +58,7 @@ public class PlayerController {
         }
     }
 
-    @GetMapping("/get-role/{username}")
+    @GetMapping("/get_role/{username}")
     public ResponseEntity<?> getRoleByUsername(@PathVariable String username) {
         boolean isAdmin;
         try {
@@ -75,5 +75,13 @@ public class PlayerController {
     public ResponseEntity<?> getAllJoueurs() {
         List<Player> playerList = playerService.getAllJoueurs();
         return ResponseEntity.ok(playerList);
+    }
+
+    @PostMapping("/update_score/{username}")
+    public ResponseEntity<?> updateScore(@PathVariable String username) {
+        Player player;
+        try {
+            player = playerService.updateScore(username);
+        }
     }
 }

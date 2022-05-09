@@ -50,7 +50,7 @@ const ListeJoueurs = () => {
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell>Pseudo</TableCell>
-                            <TableCell>Nombre de Quiz</TableCell>
+                            <TableCell>Nombre de Quiz Fait</TableCell>
                             <TableCell>Role</TableCell>
                         </TableRow>
                     </TableHead>

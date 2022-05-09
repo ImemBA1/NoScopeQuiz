@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -32,30 +32,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar() {
+    const [role, setRole] = React.useState("");
     const classes = useStyles();
     const user = localStorage.getItem('player');
-    let isAdmin = false;
     const logout = () => {
         localStorage.removeItem('player');
         window.location.reload();
     };
-    if(user) {
-
-        const reponse = fetch(`${urlBackend}/player/${user}`)
-            .then(response => response.json())
-            .then(user => {
-                return user.role;
+    if (user) {
+        const getRole = async () => {
+            const response = await fetch(`${urlBackend}/player/${user}`);
+            return await response.json();
+        }
+        useEffect(() => {
+            getRole().then(data => {
+                console.log(data);
+                setRole(data.role);
             });
-
-        const getUser = async () => {
-            const role = await reponse;
-            if (role === 'admin') {
-                isAdmin = true;
-            }
-        };
-        getUser();
+        }, []);
     }
-    console.log(isAdmin);
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.bgAppBar}>
@@ -83,7 +78,7 @@ export default function Navbar() {
                                 Accueil
                             </Typography>
                         </Link>
-                        {isAdmin || <>
+                        {role !== "admin" || <>
                             <Link href="/liste-joueurs" underline="hover">
                                 <Typography variant="h6" className={classes.title}>
                                     Joueurs
@@ -91,7 +86,7 @@ export default function Navbar() {
                             </Link>
                             <Link href="/ajout-question" underline="hover">
                                 <Typography variant="h6" className={classes.title}>
-                                    Joueurs
+                                    Ajouter une question
                                 </Typography>
                             </Link>
                         </>}

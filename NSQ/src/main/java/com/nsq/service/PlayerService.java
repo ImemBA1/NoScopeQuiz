@@ -3,7 +3,6 @@ package com.nsq.service;
 import com.nsq.exception.PlayerAlreadyExistsException;
 import com.nsq.model.Player;
 import com.nsq.repository.PlayerRepository;
-import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -40,6 +39,11 @@ public class PlayerService {
 
     public Player getOneByUsername(String username) {
         return playerRepository.findOneByUsername(username);
+    }
+
+    public boolean isUserAdmin(String username) {
+        String role = playerRepository.findRoleByUsername(username);
+        return role.equals("admin");
     }
 
     public List<Player> getAllJoueurs() {

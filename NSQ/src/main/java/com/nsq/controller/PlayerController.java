@@ -58,6 +58,19 @@ public class PlayerController {
         }
     }
 
+    @GetMapping("/get-role/{username}")
+    public ResponseEntity<?> getRoleByUsername(@PathVariable String username) {
+        boolean isAdmin;
+        try {
+            isAdmin = playerService.isUserAdmin(username);
+            return ResponseEntity.ok(isAdmin);
+        } catch (Exception e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new ResponseMessage("Erreur lors de la récupération du rôle du joueur"));
+        }
+    }
+
     @GetMapping("/liste_joueurs")
     public ResponseEntity<?> getAllJoueurs() {
         List<Player> playerList = playerService.getAllJoueurs();

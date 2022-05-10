@@ -3,7 +3,7 @@ import styles from "./QuizView.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
-import {urlBackend} from "../../service/serviceUtils";
+import {methods, requestInit, urlBackend} from "../../service/serviceUtils";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';
@@ -22,6 +22,10 @@ export default function QuizView(props) {
             });
         }, []);
     }
+    const updateScore = async (player) => {
+        return (await fetch(`${urlBackend}/player/update_score/${user}`, requestInit(methods.POST, player)))
+    }
+
 
     const {quiz} = props;
     const history = useHistory();
@@ -47,7 +51,7 @@ export default function QuizView(props) {
                         {quiz.description}
                     </div>
                     <div className={"d-flex justify-content-center mt-2"}>
-                        {role === "admin" || <>
+                        {role === "admin" || <div onClick={() => updateScore(user)}>
                             <Button variant="contained"
                                     onClick={() => history.push({
                                         pathname: "/quiz",
@@ -55,7 +59,7 @@ export default function QuizView(props) {
                                     })}>
                                 Commencer le quiz
                             </Button>
-                        </>
+                        </div>
                         }
                         {role !== "admin" || <>
                             <Button variant="outlined" endIcon={<AddIcon/>} style={{"marginRight": "10px"}}

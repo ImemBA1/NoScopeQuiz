@@ -12,16 +12,14 @@ const Resultat = () => {
     return (
         <div className="result">
             <span className="title">Score final: {score} / {nbQues}</span>
-            <h5 >Bravo {name}</h5>
-            <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                style={{alignSelf: "center", marginTop: 20}}
-                href="/home"
-            >
-                Revenir au menu
-            </Button>
+            <h5>Bravo {name}</h5>
+            <div className={"d-flex justify-content-center mt-2"}>
+                <Button
+                    variant="contained"
+                    href="/home">
+                    Revenir au menu
+                </Button>
+            </div>
         </div>
     );
 };

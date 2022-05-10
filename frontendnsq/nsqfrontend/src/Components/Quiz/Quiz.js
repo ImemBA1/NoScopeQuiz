@@ -23,8 +23,6 @@ const Quiz = () => {
                 quizState.questionsList[currQues].answer]));
     }, [quizState.questionsList, currQues]);
 
-    // console.log(options);
-
     const mix = (reponses) => {
         return reponses.sort(() => Math.random() - 0.5);
     };

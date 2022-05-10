@@ -11,9 +11,8 @@ import {
     OutlinedInput,
     TextField
 } from "@material-ui/core";
-import React from 'react';
+import React, {useState} from 'react';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
-import {useState} from "react";
 import "./PlayerRegister.css";
 import ErrorMessageBalise from "../ErrorMessageBalise/ErrorMessageBalise";
 
@@ -63,7 +62,6 @@ const PlayerRegister = () => {
                 password: user.password
             };
             signup(player).then(res => {
-                console.log(res.json());
                 if (res.status === 201) {     // si le status est différent de 201 c'est que le username est déjà pris
                     swalErr.fire({
                         title: "Vous êtes inscrit " + user.username + ", vous allez être redirigé à la page de connexion",

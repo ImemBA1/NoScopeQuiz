@@ -8,11 +8,14 @@ const Resultat = () => {
     const score = history.location.state.score;
     const nbQues = history.location.state.nbQues;
     const name = localStorage.getItem('player');
+    const scoreFinal = Number(score) / Number(nbQues) * 100;
 
     return (
         <div className="result">
             <span className="title">Score final: {score} / {nbQues}</span>
-            <h5>Bravo {name}</h5>
+            {scoreFinal >= 50 ?
+                <h5>Bravo! {name}</h5> :
+                <h5>Dommage {name}, meilleur chance la prochaine fois! </h5>}
             <div className={"d-flex justify-content-center mt-2"}>
                 <Button
                     variant="contained"

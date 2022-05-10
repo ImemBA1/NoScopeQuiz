@@ -30,8 +30,14 @@ public class QuizController {
     }
 
     @GetMapping("/liste_quiz")
-    public ResponseEntity<?> getListeQuiz(){
+    public ResponseEntity<?> getListeQuiz() {
         List<Quiz> listeQuiz = quizService.getListeQuiz();
         return ResponseEntity.ok(listeQuiz);
+    }
+
+    @PostMapping("/delete_quiz/{id}")
+    public ResponseEntity<?> deleteQuiz(@PathVariable Long id) {
+        quizService.deleteQuiz(id);
+        return ResponseEntity.ok("Quiz supprimé");
     }
 }

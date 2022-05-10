@@ -7,6 +7,7 @@ import {methods, requestInit, urlBackend} from "../../service/serviceUtils";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';
+import Swal from "sweetalert2";
 
 export default function QuizView(props) {
     const [role, setRole] = React.useState("");
@@ -22,13 +23,37 @@ export default function QuizView(props) {
             });
         }, []);
     }
+
+    const {quiz} = props;
+    const history = useHistory();
     const updateScore = async (player) => {
         return (await fetch(`${urlBackend}/player/update_score/${user}`, requestInit(methods.POST, player)))
     }
 
+    const deleteQuiz = async (id) => {
+        Swal.fire({
+            title: 'Vous êtes sûr?',
+            text: "Vous ne pourrez pas revenir en arrière!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'burlywood',
+            cancelButtonColor: 'red',
+            confirmButtonText: 'Oui, supprimer!',
+            cancelButtonText: 'Annuler'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await Swal.fire(
+                    'Supprimé!',
+                    'Le quiz a été supprimé.',
+                    'success'
+                ).then(async () => {
+                    window.location.reload();
+                });
+                return (await fetch(`${urlBackend}/quiz/delete_quiz/${id}`, requestInit(methods.POST, id)));
+            }
+        })
+    }
 
-    const {quiz} = props;
-    const history = useHistory();
     return (
         <div className={styles.cardHolder}>
             <div className="card">
@@ -78,11 +103,8 @@ export default function QuizView(props) {
                                 Modifier
                             </Button>
 
-                            <Button variant="outlined" endIcon={<DeleteIcon/> }
-                                    onClick={() => history.push({
-                                        pathname: "/supprimer_quiz",
-                                        state: {quiz: quiz}
-                                    })}>
+                            <Button variant="outlined" endIcon={<DeleteIcon/>}
+                                    onClick={() => deleteQuiz(quiz.idQuiz)}>
                                 Supprimer
                             </Button>
                         </>

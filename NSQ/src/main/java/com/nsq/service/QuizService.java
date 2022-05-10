@@ -26,4 +26,8 @@ public class QuizService {
     public List<Quiz> getListeQuiz() {
         return quizRepository.findAll();
     }
+
+    public void deleteQuiz(Long id) {
+        quizRepository.deleteById(id);
+    }
 }

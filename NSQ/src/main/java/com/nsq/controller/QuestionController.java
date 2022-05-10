@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping("/question")
 public class QuestionController {
+
     private final QuestionService questionService;
 
     public QuestionController(QuestionService questionService) {

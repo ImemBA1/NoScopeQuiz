@@ -17,7 +17,7 @@ const AjoutQuestion = () => {
         setValues({...values, [prop]: event.target.value});
     };
 
-    return(
+    return (
         <div>
             <h1>Ajout de question</h1>
         </div>

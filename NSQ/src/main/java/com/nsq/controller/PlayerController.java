@@ -82,6 +82,11 @@ public class PlayerController {
         Player player;
         try {
             player = playerService.updateScore(username);
+            return ResponseEntity.ok(player);
+        } catch (Exception e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new ResponseMessage("Erreur lors de la mise à jour du score du joueur"));
         }
     }
 }

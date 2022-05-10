@@ -73,7 +73,7 @@ export default function Navbar() {
                         </Link>
                     </>}
                     {user == null || <>
-                        <Link href="/" underline="hover">
+                        <Link href="/home" underline="hover">
                             <Typography variant="h6" className={classes.title}>
                                 Accueil
                             </Typography>

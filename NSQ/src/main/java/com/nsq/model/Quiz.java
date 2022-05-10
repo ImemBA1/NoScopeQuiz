@@ -23,21 +23,18 @@ public class Quiz {
 
     private String difficulte;
 
-    private String score;
-
     @OneToMany
     private List<Question> questionsList;
 
     public Quiz() {
     }
 
-    public Quiz(String categorie, String description, String difficulte, List<Question> questionsList, String titre,String score) {
+    public Quiz(String categorie, String description, String difficulte, List<Question> questionsList, String titre) {
         this.titre = titre;
         this.categorie = categorie;
         this.description = description;
         this.difficulte = difficulte;
         this.questionsList = questionsList;
-        this.score = score;
     }
 }
 

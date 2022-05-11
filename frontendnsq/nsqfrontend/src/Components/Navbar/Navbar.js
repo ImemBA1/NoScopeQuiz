@@ -46,7 +46,6 @@ export default function Navbar() {
         }
         useEffect(() => {
             getRole().then(data => {
-                console.log(data);
                 setRole(data.role);
             });
         }, []);

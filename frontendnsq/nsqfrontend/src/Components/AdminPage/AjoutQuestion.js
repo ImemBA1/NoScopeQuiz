@@ -5,6 +5,8 @@ import {Button} from "@mui/material";
 import ErrorMessageBalise from "../ErrorMessageBalise/ErrorMessageBalise";
 import {makeStyles} from "@material-ui/core/styles";
 import AddIcon from '@mui/icons-material/Add';
+import {methods, requestInit, toast, urlBackend} from "../../service/serviceUtils";
+import Swal from "sweetalert2";
 
 const AjoutQuestion = () => {
     const history = useHistory();
@@ -17,14 +19,30 @@ const AjoutQuestion = () => {
         option2: '',
         option3: '',
         answer: '',
+        idQuiz: quizState.idQuiz
     });
 
+    const ajoutQuestion = async (questionDTO) => {
+        return await fetch(`${urlBackend}/question/ajouter_question`, requestInit(methods.POST, questionDTO));
+    };
+
     const onSubmit = (QuestionDTO) => {
+        console.log(QuestionDTO);
+        console.log(values);
+        console.log(quizState);
         if (QuestionDTO.question === "" || QuestionDTO.option1 === "" ||
             QuestionDTO.option2 === "" || QuestionDTO.option3 === "" || QuestionDTO.answer === "") {
             setError(true);
+        } else {
+            ajoutQuestion(QuestionDTO).then(() => {
+                Swal.fire({title: 'Question ajoutée', icon: 'success'}).then(r => {
+                        history.push('/dashboard');
+                    }
+                );
+            })
         }
     }
+
     const [error, setError] = useState(false);
     const handleChange = (prop) => (event) => {
         setError(false);
@@ -42,7 +60,7 @@ const AjoutQuestion = () => {
 
     return (
         <div>
-            <h2 className={"text-center my-3 fst-italic text-decoration-underline"}>Ajouter une question</h2>
+            <h2 className={"text-center my-3 fst-italic text-decoration-underline"}>Ajouter la question au Quiz</h2>
             {error && <ErrorMessageBalise>Erreur</ErrorMessageBalise>}
             <TextField
                 onChange={handleChange('question')}
@@ -88,7 +106,7 @@ const AjoutQuestion = () => {
                     endIcon={<AddIcon/>}
                     onClick={() => {
                         onSubmit(values);
-                    }}> Ajouter la question 1 </Button>
+                    }}> Ajouter</Button>
             </div>
         </div>
     );

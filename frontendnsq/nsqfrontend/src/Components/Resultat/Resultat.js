@@ -15,7 +15,7 @@ const Resultat = () => {
             <span className="title">Score final: {score} / {nbQues}</span>
             {scoreFinal >= 50 ?
                 <h5>Bravo! {name}</h5> :
-                <h5>Dommage {name}, meilleur chance la prochaine fois! </h5>}
+                <h5>Dommage {name}, tu n'as pas la moyenne, meilleur chance la prochaine fois! </h5>}
             <div className={"d-flex justify-content-center mt-2"}>
                 <Button
                     variant="contained"

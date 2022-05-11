@@ -53,7 +53,6 @@ const PlayerLogin = () => {
     };
 
     const onSubmit = (user) => {
-        console.log(user);
         if (user.username === "" || user.password === "") {
             setError(true);
         } else {

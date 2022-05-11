@@ -32,7 +32,7 @@ export default function QuizView(props) {
 
     const deleteQuiz = async (id) => {
         Swal.fire({
-            title: 'Vous êtes sûr?',
+            title: 'Vous êtes sûr de supprimer ce Quiz?',
             text: "Vous ne pourrez pas revenir en arrière!",
             icon: 'warning',
             showCancelButton: true,
@@ -97,10 +97,10 @@ export default function QuizView(props) {
 
                             <Button variant="outlined" endIcon={<SettingsIcon/>} style={{"marginRight": "10px"}}
                                     onClick={() => history.push({
-                                        pathname: "/modifier_quiz",
+                                        pathname: "/liste_questions",
                                         state: {quiz: quiz}
                                     })}>
-                                Modifier
+                                Liste des questions
                             </Button>
 
                             <Button variant="outlined" endIcon={<DeleteIcon/>}

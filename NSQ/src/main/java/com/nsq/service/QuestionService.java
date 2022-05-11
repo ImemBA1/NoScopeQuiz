@@ -2,6 +2,7 @@ package com.nsq.service;
 
 import com.nsq.dto.QuestionDTO;
 import com.nsq.model.Question;
+import com.nsq.model.Quiz;
 import com.nsq.repository.QuestionRepository;
 import com.nsq.repository.QuizRepository;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,13 @@ public class QuestionService {
         question.setOption3(questionDTO.getOption3());
         quizRepository.getById(questionDTO.getIdQuiz()).getQuestionsList().add(question);
         return questionRepository.save(question);
+    }
+
+    public void deleteQuestion(Long id) {
+        Question question = questionRepository.getById(id);
+        Quiz quiz = quizRepository.findByQuestionsList_IdQuestion(id);
+        quiz.getQuestionsList().remove(question);
+        quizRepository.save(quiz);
+        questionRepository.deleteById(id);
     }
 }

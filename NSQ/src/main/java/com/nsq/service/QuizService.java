@@ -1,5 +1,6 @@
 package com.nsq.service;
 
+import com.nsq.model.Question;
 import com.nsq.model.Quiz;
 import com.nsq.repository.QuizRepository;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,10 @@ public class QuizService {
 
     public void deleteQuiz(Long id) {
         quizRepository.deleteById(id);
+    }
+
+    public List<Question> getAllQuestions(Long id) {
+        Quiz quiz = quizRepository.getByIdQuiz(id);
+        return quiz.getQuestionsList();
     }
 }

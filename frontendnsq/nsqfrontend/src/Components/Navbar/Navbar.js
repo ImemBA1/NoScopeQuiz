@@ -78,7 +78,7 @@ export default function Navbar() {
                             </Typography>
                         </Link>
                         {role !== "admin" || <>
-                            <Link href="/liste-joueurs" underline="hover">
+                            <Link href="/liste_joueurs" underline="hover">
                                 <Typography variant="h6" className={classes.title}>
                                     Joueurs
                                 </Typography>

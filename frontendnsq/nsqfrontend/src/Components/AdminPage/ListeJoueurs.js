@@ -38,7 +38,7 @@ const ListeJoueurs = () => {
             </div>
         );
     }
-    console.log(listJoueur);
+
     return (
         <div style={{height: 300, width: '70%', margin: 'auto', marginTop: '35px'}}>
             <Typography variant="h5" gutterBottom component="div" style={{textAlign: "center"}}>

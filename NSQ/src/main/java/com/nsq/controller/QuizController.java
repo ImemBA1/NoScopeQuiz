@@ -40,4 +40,9 @@ public class QuizController {
         quizService.deleteQuiz(id);
         return ResponseEntity.ok("Quiz supprimé");
     }
+
+    @GetMapping("/liste_questions/{id}")
+    public ResponseEntity<?> getAllQuestions(@PathVariable Long id) {
+        return ResponseEntity.ok(quizService.getAllQuestions(id));
+    }
 }

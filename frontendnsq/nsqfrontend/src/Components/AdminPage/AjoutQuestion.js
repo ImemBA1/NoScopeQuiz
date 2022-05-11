@@ -5,7 +5,7 @@ import {Button} from "@mui/material";
 import ErrorMessageBalise from "../ErrorMessageBalise/ErrorMessageBalise";
 import {makeStyles} from "@material-ui/core/styles";
 import AddIcon from '@mui/icons-material/Add';
-import {methods, requestInit, toast, urlBackend} from "../../service/serviceUtils";
+import {methods, requestInit, urlBackend} from "../../service/serviceUtils";
 import Swal from "sweetalert2";
 
 const AjoutQuestion = () => {
@@ -27,9 +27,6 @@ const AjoutQuestion = () => {
     };
 
     const onSubmit = (QuestionDTO) => {
-        console.log(QuestionDTO);
-        console.log(values);
-        console.log(quizState);
         if (QuestionDTO.question === "" || QuestionDTO.option1 === "" ||
             QuestionDTO.option2 === "" || QuestionDTO.option3 === "" || QuestionDTO.answer === "") {
             setError(true);
@@ -39,7 +36,7 @@ const AjoutQuestion = () => {
                         history.push('/dashboard');
                     }
                 );
-            })
+            });
         }
     }
 

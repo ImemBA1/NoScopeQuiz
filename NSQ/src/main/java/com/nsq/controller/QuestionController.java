@@ -3,6 +3,7 @@ package com.nsq.controller;
 import com.nsq.dto.QuestionDTO;
 import com.nsq.model.Question;
 import com.nsq.service.QuestionService;
+import com.nsq.service.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class QuestionController {
 
     private final QuestionService questionService;
+    private final QuizService quizService;
 
-    public QuestionController(QuestionService questionService) {
+    public QuestionController(QuestionService questionService, QuizService quizService) {
         this.questionService = questionService;
+        this.quizService = quizService;
     }
 
     @PostMapping("/ajouter_question")
@@ -27,4 +30,12 @@ public class QuestionController {
         }
         return ResponseEntity.ok(questionCree);
     }
+
+    @PostMapping("/delete_question/{id}")
+    public ResponseEntity<?> deleteQuestion(@PathVariable Long id) {
+        questionService.deleteQuestion(id);
+        return ResponseEntity.ok("Question supprimée");
+    }
+
+
 }

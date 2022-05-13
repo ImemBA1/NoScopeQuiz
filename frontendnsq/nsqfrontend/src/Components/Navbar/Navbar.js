@@ -34,22 +34,24 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const [role, setRole] = React.useState("");
     const classes = useStyles();
-    const user = sessionStorage.getItem('player');
+    let user = localStorage.getItem('player');
     const logout = () => {
-        sessionStorage.removeItem('player');
+        localStorage.removeItem('player');
         window.location.reload();
     };
-    if (user) {
-        const getRole = async () => {
-            const response = await fetch(`${urlBackend}/player/${user}`);
-            return await response.json();
-        }
-        useEffect(() => {
+    const getRole = async () => {
+        const response = await fetch(`${urlBackend}/player/${user}`);
+        return await response.json();
+    }
+    useEffect(() => {
+        user = localStorage.getItem('player');
+        if (user) {
             getRole().then(data => {
                 setRole(data.role);
             });
-        }, []);
-    }
+        }
+    }, []);
+
     return (
         <div className={classes.root}>
             <AppBar position="static" className={classes.bgAppBar}>

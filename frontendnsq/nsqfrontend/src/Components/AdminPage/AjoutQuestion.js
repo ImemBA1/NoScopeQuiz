@@ -32,7 +32,7 @@ const AjoutQuestion = () => {
             setError(true);
         } else {
             ajoutQuestion(questionDTO).then(() => {
-                Swal.fire({title: 'Question ajoutée', icon: 'success'}).then(r => {
+                Swal.fire({title: 'Question ajoutée', icon: 'success'}).then(() => {
                         history.push('/dashboard');
                     }
                 );
@@ -88,7 +88,6 @@ const AjoutQuestion = () => {
                 style={{marginBottom: 25}}
             />
             <TextField
-                floatingLabel={true}
                 onChange={handleChange('answer')}
                 label={"Bonne réponse"}
                 variant="outlined"

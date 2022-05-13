@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 export default function QuizView(props) {
     const [role, setRole] = React.useState("");
-    const user = sessionStorage.getItem('player');
+    const user = localStorage.getItem('player');
     if (user) {
         const getRole = async () => {
             const response = await fetch(`${urlBackend}/player/${user}`);

@@ -15,10 +15,8 @@ import React, {useState} from 'react';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import "./PlayerLogin.css";
 import ErrorMessageBalise from "../ErrorMessageBalise/ErrorMessageBalise";
-import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
 const PlayerLogin = () => {
-    const history = useHistory();
     const [error, setError] = useState(false);
     const login = async (username, password) => {
         return (await fetch(`${urlBackend}/player/login/${username}/${password}`)).json()
@@ -60,9 +58,11 @@ const PlayerLogin = () => {
         } else {
             login(user.username, user.password).then(res => {
                 if (res.username !== undefined) {
-                    sessionStorage.setItem("player", res.username);
-                    history.push("/home");
-                    toast.fire({title: "Bienvenue " + res.username}).then();
+                    localStorage.setItem("player", res.username);
+                    toast.fire({title: "Bienvenue " + res.username}).then(() => {
+                            window.location.href = "/home";
+                        }
+                    );
                 } else {
                     setError(true);
                 }

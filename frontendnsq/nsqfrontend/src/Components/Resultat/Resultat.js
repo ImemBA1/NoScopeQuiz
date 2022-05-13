@@ -7,7 +7,7 @@ const Resultat = () => {
     const history = useHistory();
     const score = history.location.state.score;
     const nbQues = history.location.state.nbQues;
-    const name = sessionStorage.getItem('player');
+    const name = localStorage.getItem('player');
     const scoreFinal = Number(score) / Number(nbQues) * 100;
 
     return (

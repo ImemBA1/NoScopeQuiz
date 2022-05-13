@@ -73,7 +73,7 @@ export default function QuizView(props) {
                         </p>
                     </div>
                     <div className={`d-flex justify-content-around ${styles.quizDescription}`}>
-                       <i> {quiz.description}</i>
+                        <i> {quiz.description}</i>
                     </div>
                     <div className={"d-flex justify-content-center mt-2"}>
                         {role === "admin" || <div onClick={() => updateScore(user)}>

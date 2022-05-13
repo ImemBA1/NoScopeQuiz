@@ -24,13 +24,13 @@ const ModifierQuestion = () => {
         let question;
         question = history.location.state.question;
         setValues({
-            idQuestion: question.idQuestion,
-            question: question.question,
-            option1: question.option1,
-            option2: question.option2,
-            option3: question.option3,
-            answer: question.answer,
-        }
+                idQuestion: question.idQuestion,
+                question: question.question,
+                option1: question.option1,
+                option2: question.option2,
+                option3: question.option3,
+                answer: question.answer,
+            }
         );
     }, []);
 
@@ -40,8 +40,8 @@ const ModifierQuestion = () => {
     };
 
     const onSubmit = (question) => {
-        if (question.question === ""  || question.option1 === "" ||
-            question.option2 === "" || question.option3 === "" || question.answer === "" ) {
+        if (question.question === "" || question.option1 === "" ||
+            question.option2 === "" || question.option3 === "" || question.answer === "") {
             setError(true);
         } else {
             modifyQuestion(question).then(() => {

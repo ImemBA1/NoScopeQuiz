@@ -7,11 +7,12 @@
     line-height: 1;
 }
 
-.quizDescription{
+.quizDescription {
     display: block;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 Button {
     margin: 1rem 2px;
 }

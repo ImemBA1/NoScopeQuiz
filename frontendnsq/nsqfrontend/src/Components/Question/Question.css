@@ -42,11 +42,13 @@
         width: 100%;
     }
 }
-.buttons{
+
+.buttons {
     display: flex;
     width: 50%;
     justify-content: space-around;
 }
+
 .correct {
     background-color: rgb(31, 210, 31);
     color: white;

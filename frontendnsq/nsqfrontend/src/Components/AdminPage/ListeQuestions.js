@@ -76,54 +76,56 @@ const ListeQuestions = () => {
                         className={"text-center my-3 fst-italic text-decoration-underline"}>
                 Liste des questions du quiz: {quizState.titre}
             </Typography>
-            <TableContainer component={Paper}>
-                <Table className={classes.table} size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Question</TableCell>
-                            <TableCell>Bonne réponse</TableCell>
-                            <TableCell>1èr choix</TableCell>
-                            <TableCell>2ème choix</TableCell>
-                            <TableCell>3ème choix</TableCell>
-                            <TableCell>Options</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {questions.map((question) => (
-                            <TableRow key={question.idQuestion} style={{textTransform: "capitalize"}}>
-                                <TableCell component="th" scope="row">{question.idQuestion}</TableCell>
-                                <TableCell>
-                                    {question.question}
-                                </TableCell>
-                                <TableCell>
-                                    {question.answer}
-                                </TableCell>
-                                <TableCell>
-                                    {question.option1}
-                                </TableCell>
-                                <TableCell>
-                                    {question.option2}
-                                </TableCell>
-                                <TableCell>
-                                    {question.option3}
-                                </TableCell>
-                                <TableCell>
-                                    <Stack direction="row" spacing={1}>
-                                        <IconButton aria-label="Modifier" color="primary">
-                                            <EditIcon/>
-                                        </IconButton>
-                                        <IconButton aria-label="Supprimer" color={"secondary"}
-                                                    onClick={() => deleteQuestion(question.idQuestion)}>
-                                            <DeleteIcon/>
-                                        </IconButton>
-                                    </Stack>
-                                </TableCell>
+            <div style={{paddingBottom: '45px'}}>
+                <TableContainer component={Paper}>
+                    <Table className={classes.table} size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>ID</TableCell>
+                                <TableCell>Question</TableCell>
+                                <TableCell>Bonne réponse</TableCell>
+                                <TableCell>1èr choix</TableCell>
+                                <TableCell>2ème choix</TableCell>
+                                <TableCell>3ème choix</TableCell>
+                                <TableCell>Options</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {questions.map((question) => (
+                                <TableRow key={question.idQuestion} style={{textTransform: "capitalize"}}>
+                                    <TableCell component="th" scope="row">{question.idQuestion}</TableCell>
+                                    <TableCell>
+                                        {question.question}
+                                    </TableCell>
+                                    <TableCell>
+                                        {question.answer}
+                                    </TableCell>
+                                    <TableCell>
+                                        {question.option1}
+                                    </TableCell>
+                                    <TableCell>
+                                        {question.option2}
+                                    </TableCell>
+                                    <TableCell>
+                                        {question.option3}
+                                    </TableCell>
+                                    <TableCell>
+                                        <Stack direction="row" spacing={1}>
+                                            <IconButton aria-label="Modifier" color="primary">
+                                                <EditIcon/>
+                                            </IconButton>
+                                            <IconButton aria-label="Supprimer" color={"secondary"}
+                                                        onClick={() => deleteQuestion(question.idQuestion)}>
+                                                <DeleteIcon/>
+                                            </IconButton>
+                                        </Stack>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
         </div>
     );
 }

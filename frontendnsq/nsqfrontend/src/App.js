@@ -10,6 +10,7 @@ import ListeJoueurs from "./Components/AdminPage/ListeJoueurs";
 import Dashboard from "./Components/AdminPage/Dashboard";
 import AjoutQuestion from "./Components/AdminPage/AjoutQuestion";
 import ListeQuestions from "./Components/AdminPage/ListeQuestions";
+import AjoutQuiz from "./Components/AdminPage/AjoutQuiz";
 function App() {
     return (
         <Router>
@@ -24,6 +25,7 @@ function App() {
             <Route path="/ajouter_question" component={AjoutQuestion}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/liste_questions" component={ListeQuestions}/>
+            <Route path="/ajout_quiz" component={AjoutQuiz}/>
 
         </Router>
     );

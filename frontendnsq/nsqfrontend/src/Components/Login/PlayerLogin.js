@@ -5,18 +5,20 @@ import {
     FormControl,
     IconButton,
     InputAdornment,
-    InputLabel, Link,
+    InputLabel,
+    Link,
     MuiThemeProvider,
     OutlinedInput,
     TextField
 } from "@material-ui/core";
-import React from 'react';
+import React, {useState} from 'react';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
-import {useState} from "react";
 import "./PlayerLogin.css";
 import ErrorMessageBalise from "../ErrorMessageBalise/ErrorMessageBalise";
+import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
 const PlayerLogin = () => {
+    const history = useHistory();
     const [error, setError] = useState(false);
     const login = async (username, password) => {
         return (await fetch(`${urlBackend}/player/login/${username}/${password}`)).json()
@@ -59,9 +61,8 @@ const PlayerLogin = () => {
             login(user.username, user.password).then(res => {
                 if (res.username !== undefined) {
                     localStorage.setItem("player", res.username);
-                    toast.fire({title: "Bienvenue " + res.username} ).then(() => {
-                        window.location.href = "/home";
-                    })
+                    history.push("/home");
+                    toast.fire({title: "Bienvenue " + res.username}).then();
                 } else {
                     setError(true);
                 }
@@ -109,7 +110,7 @@ const PlayerLogin = () => {
                         />
                     </FormControl>
 
-                    <Link href={"/register"} style={{ textAlign:"center"}} underline="hover">
+                    <Link href={"/register"} style={{textAlign: "center"}} underline="hover">
                         {'Pas de compte ? Inscrivez-vous!'}
                     </Link>
 

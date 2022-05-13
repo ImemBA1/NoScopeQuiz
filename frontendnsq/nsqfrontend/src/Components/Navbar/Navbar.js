@@ -83,6 +83,11 @@ export default function Navbar() {
                                     Joueurs
                                 </Typography>
                             </Link>
+                            <Link href="/ajout_quiz" underline="hover">
+                                <Typography variant="h6" className={classes.title}>
+                                    Ajouter un quiz
+                                </Typography>
+                            </Link>
                             <Link href="/dashboard" underline="hover">
                                 <Typography variant="h6" className={classes.title}>
                                     Dashboard

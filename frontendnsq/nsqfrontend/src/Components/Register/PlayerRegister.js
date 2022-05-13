@@ -59,7 +59,8 @@ const PlayerRegister = () => {
         } else {
             let player = {
                 username: user.username,
-                password: user.password
+                password: user.password,
+                role: 'Joueur',
             };
             signup(player).then(res => {
                 if (res.status === 201) {     // si le status est différent de 201 c'est que le username est déjà pris
@@ -70,7 +71,7 @@ const PlayerRegister = () => {
                         window.location.href = "/login";
                     })
                 } else {
-                    swalErr.fire({title: "Nom d'utilisateur déjà utilisé"}).then(r => {
+                    swalErr.fire({title: "Nom d'utilisateur déjà utilisé"}).then(() => {
                         setError(true);
                     })
                 }

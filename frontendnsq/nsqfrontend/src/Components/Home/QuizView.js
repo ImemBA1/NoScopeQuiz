@@ -73,7 +73,7 @@ export default function QuizView(props) {
                         </p>
                     </div>
                     <div className={`d-flex justify-content-around ${styles.quizDescription}`}>
-                        {quiz.description}
+                       <i> {quiz.description}</i>
                     </div>
                     <div className={"d-flex justify-content-center mt-2"}>
                         {role === "admin" || <div onClick={() => updateScore(user)}>
@@ -87,7 +87,7 @@ export default function QuizView(props) {
                         </div>
                         }
                         {role !== "admin" || <>
-                            <Button variant="outlined" endIcon={<AddIcon/>} style={{"marginRight": "10px"}}
+                            <Button variant="outlined" endIcon={<AddIcon/>} style={{"marginRight": "5px"}}
                                     onClick={() => history.push({
                                         pathname: "/ajouter_question",
                                         state: {quiz: quiz}
@@ -95,7 +95,7 @@ export default function QuizView(props) {
                                 Ajouter une question
                             </Button>
 
-                            <Button variant="outlined" endIcon={<SettingsIcon/>} style={{"marginRight": "10px"}}
+                            <Button variant="outlined" endIcon={<SettingsIcon/>} style={{"marginRight": "5px"}}
                                     onClick={() => history.push({
                                         pathname: "/liste_questions",
                                         state: {quiz: quiz}
@@ -105,7 +105,7 @@ export default function QuizView(props) {
 
                             <Button variant="outlined" endIcon={<DeleteIcon/>}
                                     onClick={() => deleteQuiz(quiz.idQuiz)}>
-                                Supprimer
+                                Supprimer le quiz
                             </Button>
                         </>
                         }

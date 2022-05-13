@@ -26,12 +26,12 @@ const AjoutQuestion = () => {
         return await fetch(`${urlBackend}/question/ajouter_question`, requestInit(methods.POST, questionDTO));
     };
 
-    const onSubmit = (QuestionDTO) => {
-        if (QuestionDTO.question === "" || QuestionDTO.option1 === "" ||
-            QuestionDTO.option2 === "" || QuestionDTO.option3 === "" || QuestionDTO.answer === "") {
+    const onSubmit = (questionDTO) => {
+        if (questionDTO.question === "" || questionDTO.option1 === "" ||
+            questionDTO.option2 === "" || questionDTO.option3 === "" || questionDTO.answer === "") {
             setError(true);
         } else {
-            ajoutQuestion(QuestionDTO).then(() => {
+            ajoutQuestion(questionDTO).then(() => {
                 Swal.fire({title: 'Question ajoutée', icon: 'success'}).then(r => {
                         history.push('/dashboard');
                     }

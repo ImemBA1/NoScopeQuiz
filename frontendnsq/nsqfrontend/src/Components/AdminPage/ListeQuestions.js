@@ -56,7 +56,6 @@ const ListeQuestions = () => {
                 ).then(async () => {
                 });
                 return (await fetch(`${urlBackend}/question/delete_question/${id}`, requestInit(methods.POST, id)));
-
             }
         })
     }

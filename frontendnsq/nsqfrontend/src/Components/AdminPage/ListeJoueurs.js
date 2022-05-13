@@ -44,7 +44,7 @@ const ListeJoueurs = () => {
         <div style={{height: 300, width: '85%', margin: 'auto', marginTop: '35px'}}>
             <Typography variant="h4" gutterBottom component="div" style={{textAlign: "center"}}
                         className={"text-center my-3 fst-italic text-decoration-underline"}>
-                Liste des joeueurs
+                Liste des joueurs
             </Typography>
             <TableContainer component={Paper}>
                 <Table className={classes.table} size="small">

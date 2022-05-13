@@ -12,12 +12,13 @@ import AjoutQuestion from "./Components/AdminPage/AjoutQuestion";
 import ListeQuestions from "./Components/AdminPage/ListeQuestions";
 import AjoutQuiz from "./Components/AdminPage/AjoutQuiz";
 import ModifierQuestion from "./Components/AdminPage/ModifierQuestion";
+import Lobby from "./Components/Home/Lobby";
 
 function App() {
     return (
         <Router>
             <Navbar/>
-            {/*<Route path="/" element={<Lobby/>}/>*/}
+            <Route path="/" component={Lobby}/>
             <Route path="/home" component={Home}/>
             <Route path="/register" component={PlayerRegister}/>
             <Route path="/login" component={PlayerLogin}/>

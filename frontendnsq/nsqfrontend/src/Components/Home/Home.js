@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import QuizView from "./QuizView";
+import QuizView from "../QuizView/QuizView";
 import {urlBackend} from "../../service/serviceUtils";
 import {Grid} from "@material-ui/core";
 

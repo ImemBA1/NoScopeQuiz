@@ -60,7 +60,7 @@ const PlayerLogin = () => {
         } else {
             login(user.username, user.password).then(res => {
                 if (res.username !== undefined) {
-                    localStorage.setItem("player", res.username);
+                    sessionStorage.setItem("player", res.username);
                     history.push("/home");
                     toast.fire({title: "Bienvenue " + res.username}).then();
                 } else {

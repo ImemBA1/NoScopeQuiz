@@ -3,20 +3,17 @@ import {urlBackend} from "../../service/serviceUtils";
 
 const AdminLogin = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
-    // navigate?
 
     const login = async (username, password) => {
         return (await fetch(`${urlBackend}/admin/login/${username}/${password}`)).json()
     }
 
     const onSubmit = (user) => {
-        console.log(user);
         login(user.username, user.password).then(res => {
             if (res.id !== null) {
                 alert("Connexion réussie");
             } else {
                 alert('Identifiants incorrects');
-                // sweetalert
             }
         });
     };

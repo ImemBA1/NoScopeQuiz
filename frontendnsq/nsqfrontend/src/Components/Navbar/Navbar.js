@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
     const [role, setRole] = React.useState("");
     const classes = useStyles();
-    const user = localStorage.getItem('player');
+    const user = sessionStorage.getItem('player');
     const logout = () => {
-        localStorage.removeItem('player');
+        sessionStorage.removeItem('player');
         window.location.reload();
     };
     if (user) {

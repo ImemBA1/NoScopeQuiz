@@ -18,7 +18,7 @@ function App() {
     return (
         <Router>
             <Navbar/>
-            <Route path="/" component={Lobby}/>
+            <Route exact path="/" component={Lobby}/>
             <Route path="/home" component={Home}/>
             <Route path="/register" component={PlayerRegister}/>
             <Route path="/login" component={PlayerLogin}/>

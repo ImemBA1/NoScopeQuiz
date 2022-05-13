@@ -25,7 +25,7 @@ const AjoutQuiz = () => {
 
     const onSubmit = (quiz) => {
         if (quiz.titre === "" || quiz.categorie === "" ||
-            quiz.description === "" || quiz.difficulte === "" ) {
+            quiz.description === "" || quiz.difficulte === "") {
             setError(true);
         } else {
             AjoutQuiz(quiz).then(() => {

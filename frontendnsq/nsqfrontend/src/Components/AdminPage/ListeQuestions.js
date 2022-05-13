@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import {IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
@@ -20,15 +20,17 @@ const useStyles = makeStyles({
 const ListeQuestions = () => {
     const classes = useStyles();
     const history = useHistory();
-    let quizState;
-    quizState = history.location.state.quiz;
-    const [questions, setQuestions] = React.useState([]);
+    const [questions, setQuestions] = useState([]);
+    const [titre, setTitre] = useState("");
     const getQuestions = async (id) => {
         const response = await fetch(`${urlBackend}/quiz/liste_questions/${id}`);
         return await response.json();
     };
 
     useEffect(() => {
+        let quizState;
+        quizState = history.location.state.quiz;
+        setTitre(quizState.titre);
         getQuestions(quizState.idQuiz).then(data => {
             setQuestions(data);
         });
@@ -74,7 +76,7 @@ const ListeQuestions = () => {
         <div style={{height: 300, width: '85%', margin: 'auto', marginTop: '35px'}}>
             <Typography variant="h4" gutterBottom component="div" style={{textAlign: "center"}}
                         className={"text-center my-3 fst-italic text-decoration-underline"}>
-                Liste des questions du quiz: {quizState.titre}
+                Liste des questions du quiz: {titre}
             </Typography>
             <div style={{paddingBottom: '45px'}}>
                 <TableContainer component={Paper}>
@@ -111,7 +113,11 @@ const ListeQuestions = () => {
                                     </TableCell>
                                     <TableCell>
                                         <Stack direction="row" spacing={1}>
-                                            <IconButton aria-label="Modifier" color="primary">
+                                            <IconButton aria-label="Modifier" color="primary"
+                                                        onClick={() => history.push({
+                                                            pathname: "/modifer_question",
+                                                            state: {question: question}
+                                                        })}>
                                                 <EditIcon/>
                                             </IconButton>
                                             <IconButton aria-label="Supprimer" color={"secondary"}

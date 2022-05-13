@@ -36,4 +36,14 @@ public class QuestionService {
         quizRepository.save(quiz);
         questionRepository.deleteById(id);
     }
+
+    public Question updateQuestion(Long id, Question question) {
+        Question questionUpdate = questionRepository.getById(id);
+        questionUpdate.setQuestion(question.getQuestion());
+        questionUpdate.setAnswer(question.getAnswer());
+        questionUpdate.setOption1(question.getOption1());
+        questionUpdate.setOption2(question.getOption2());
+        questionUpdate.setOption3(question.getOption3());
+        return questionRepository.save(questionUpdate);
+    }
 }

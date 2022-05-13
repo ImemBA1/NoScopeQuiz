@@ -37,5 +37,17 @@ public class QuestionController {
         return ResponseEntity.ok("Question supprimée");
     }
 
+    @PutMapping("/update_question/{id}")
+    public ResponseEntity<?> updateQuestion(@PathVariable Long id, @RequestBody Question question) {
+        Question questionUpdate;
+        try {
+            questionUpdate = questionService.updateQuestion(id, question);
+            return ResponseEntity.ok(questionUpdate);
+        } catch (Exception e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Erreur lors de la modification de la question");
+        }
+    }
 
 }

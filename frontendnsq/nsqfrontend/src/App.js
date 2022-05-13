@@ -11,6 +11,8 @@ import Dashboard from "./Components/AdminPage/Dashboard";
 import AjoutQuestion from "./Components/AdminPage/AjoutQuestion";
 import ListeQuestions from "./Components/AdminPage/ListeQuestions";
 import AjoutQuiz from "./Components/AdminPage/AjoutQuiz";
+import ModifierQuestion from "./Components/AdminPage/ModifierQuestion";
+
 function App() {
     return (
         <Router>
@@ -26,7 +28,7 @@ function App() {
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/liste_questions" component={ListeQuestions}/>
             <Route path="/ajout_quiz" component={AjoutQuiz}/>
-
+            <Route path="/modifer_question" component={ModifierQuestion}/>
         </Router>
     );
 }
